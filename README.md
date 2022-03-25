@@ -1,2 +1,2 @@
 # archtall
-arch install
+arch install script...... i use arch btw
