@@ -17,7 +17,7 @@ echo NOTICE: Do not add /dev/
 read DISK
 DDISK="/dev/$DISK"
 
-fdisk DDISK <<EEOF
+fdisk $DDISK <<EEOF
 q
 
 EEOF
