@@ -35,3 +35,5 @@ arch install script...... i use arch btw
 - umount `/mnt/home`
 - umount `/mnt`
 - reboot into ARCH
+
+###### why?
