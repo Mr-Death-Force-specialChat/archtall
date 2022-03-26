@@ -31,7 +31,7 @@ mkinitcpio -p linux
 mkinitcpio -p linux-lts
 
 sed -i 's/\#en_US.UTF-8/en_US.UTF-8/g' /etc/locale.gen
-local-gen
+locale-gen
 
 echo Root password
 passwd
