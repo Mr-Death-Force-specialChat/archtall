@@ -30,7 +30,7 @@ sed -i 's/block filesystems/block encrypt lvm2 filesystems/g' /etc/mkinitcpio.co
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
 
-sed -i 's/#en_US.UTF-8/en_US.UTF-8/g'/etc/locale.gen
+sed -i 's/\#en_US.UTF-8/en_US.UTF-8/g' /etc/locale.gen
 local-gen
 
 echo Root password
