@@ -37,7 +37,7 @@ echo Root password
 passwd
 echo User name
 read username
-useradd -m -g user -G wheel $username
+useradd -m -g users -G wheel $username
 passwd $username
 
 if [ ! -f $(which sudo)  ]
