@@ -25,7 +25,7 @@ EEOF
 echo press enter...
 read
 
-fdisk DDISK <<EEOF
+fdisk $DDISK <<EEOF
 g
 n
 
