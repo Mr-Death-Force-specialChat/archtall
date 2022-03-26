@@ -73,7 +73,7 @@ echo Root part size \(Format: XXGB = XX gigabytes\)
 read ROOTSZ
 
 lvcreate -L $ROOTSZ $VOLGRP -n root_part
-lvcreate -l 100%FREE -n home_part
+lvcreate -l 100%FREE $VOLGRP -n home_part
 
 modprobe dm_mod
 vgscan
