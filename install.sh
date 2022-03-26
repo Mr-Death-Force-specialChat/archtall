@@ -103,7 +103,7 @@ EEOF
 
 cp install-chroot.sh /mnt/install-chroot.sh
 chmod u+x /mnt/install-chroot.sh
-echo $DBOOT>/mnt/VAR_DBOOT
+echo $DGRUB>/mnt/VAR_DGRUB
 echo $ROOT>/mnt/VAR_ROOT
 echo $VOLGRP>/mnt/VAR_VOLGRP
 

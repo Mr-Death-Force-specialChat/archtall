@@ -2,11 +2,11 @@
 
 set -e
 
-DBOOT=$(cat /VAR_DBOOT)
+DGRUB=$(cat /VAR_DGRUB)
 ROOT=$(cat /VAR_ROOT)
 VOLGRP=$(cat /VAR_VOLGRP)
 
-rm /VAR_DBOOT
+rm /VAR_DGRUB
 rm /VAR_ROOT
 rm /VAR_VOLGRP
 
@@ -62,7 +62,7 @@ pacman -S grub efibootmgr dosfstools mtools os-prober <<EEOF
 EEOF
 
 mkdir /boot/EFI
-mount $DBOOT /boot/EFI
+mount $DGRUB /boot/EFI
 
 echo Bootloader id \(Entry name\)
 read BOOTID
