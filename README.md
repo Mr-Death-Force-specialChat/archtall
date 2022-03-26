@@ -1,3 +1,6 @@
+# WARNING
+# THIS WILL NOT WORK AND WILL NOT PROPERLY INSTALL ARCH
+
 # archtall
 arch install script...... i use arch btw
 
