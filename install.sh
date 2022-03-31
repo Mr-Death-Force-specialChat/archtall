@@ -113,7 +113,7 @@ rm /mnt/install-chroot.sh
 mv install-after.sh /mnt/install-after.sh
 USERNAME=$(cat /mnt/USERNAME.DLME)
 rm /mnt/USERNAME.DLME
-echo "/install-after.sh" | tee -a /mnt/home/$USERNAME/.bashrc
+echo "\n\n/install-after.sh" | tee -a /mnt/home/$USERNAME/.bashrc
 chmod u+x /mnt/install-after.sh
 
 umount /mnt/boot/EFI
