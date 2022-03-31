@@ -1,7 +1,20 @@
 #!/bin/bash
 
-echo enter your password
+echo Enter your password
 sudo id
+
+sudo rm -r /etc/pacman.d/gnupg
+sudo pacman-key --init
+sudo pacman -S archlinux-keyring <<EEOF
+
+
+
+
+
+
+
+EEOF
+sudo pacman-key --populate archlinux
 
 echo ----------------------------------------------------------------------------------
 echo \|					Installing microcode					  \|
