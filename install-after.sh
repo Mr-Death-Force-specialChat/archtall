@@ -22,7 +22,7 @@ echo ---------------------------------------------------------------------------
 
 gpu_type=$(lspci)
 if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
-	sudo pacman -S --noconfirm --needed nvidia nvidia-xconfig
+	sudo pacman -S --noconfirm --needed nvidia nvidia-lts nvidia-xconfig
 elif lspci | grep 'VGA' | grep -E "Radeon|AMD"; then
 	sudo pacman -S --noconfirm --needed xf86-video-amdgpu
 elif grep -E "Integrated Graphics Controller" <<< ${gpu_type}; then
