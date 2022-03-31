@@ -31,6 +31,7 @@ arch install script...... i use arch btw
 - umount stuff
 <br>
 <br>
+### out dated
 - umount `/mnt/boot/EFI`
 - umount `/mnt/boot`
 - umount `/mnt/home`
