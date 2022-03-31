@@ -52,7 +52,8 @@ EEOF
 fi
 
 visudo <<EEOF
-/# %wheel ALL=(ALL) ALL
+/# %wheel ALL=(ALL:ALL) ALL
+x
 x
 :w
 :q
