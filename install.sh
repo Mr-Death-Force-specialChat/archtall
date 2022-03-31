@@ -108,3 +108,29 @@ echo $ROOT>/mnt/VAR_ROOT
 echo $VOLGRP>/mnt/VAR_VOLGRP
 
 arch-chroot /mnt /install-chroot.sh
+
+rm /mnt/install-chroot.sh
+mv install-after.sh /mnt/install-after.sh
+USERNAME=$(cat /mnt/USERNAME.DLME)
+rm /mnt/USERNAME.DLME
+echo "/install-after.sh" | tee -a /mnt/home/$USERNAME/.bashrc
+chmod u+x /mnt/install-after.sh
+
+umount /mnt/boot/EFI
+umount /mnt/boot
+umount /mnt/home
+umount /mnt
+
+echo Restarting in
+echo 5 seconds...
+sleep 1s
+echo 4 seconds...
+sleep 1s
+echo 3 seconds...
+sleep 1s
+echo 2 seconds...
+sleep 1s
+echo 1 seconds...
+sleep 1s
+echo Rebooting...
+reboot

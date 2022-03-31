@@ -37,6 +37,9 @@ echo Root password
 passwd
 echo User name
 read username
+
+echo $username>USERNAME.DLME
+
 useradd -m -g users -G wheel $username
 passwd $username
 
@@ -80,3 +83,5 @@ sed -i 's/#GRUB_ENABLE_CRYPTODISK=y/GRUB_ENABLE_CRYPTODISK=y/g' /etc/default/gru
 sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=\/dev\/'${ROOT}':'${VOLGRP}':allow-discards loglevel=3"/g' /etc/default/grub
 
 grub-mkconfig -o /boot/grub/grub.cfg
+
+exit
