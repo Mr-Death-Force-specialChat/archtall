@@ -1,5 +1,6 @@
 # WARNING
-# THIS WILL NOT WORK AND WILL NOT PROPERLY INSTALL ARCH
+# THIS SUCKS ALOT WATCH A FUCKING TUTORIAL
+# INSTEAD OF USING THIS SCRIPRT
 
 # archtall
 arch install script...... i use arch btw
@@ -30,6 +31,7 @@ arch install script...... i use arch btw
 - umount stuff
 <br>
 <br>
+### out dated
 - umount `/mnt/boot/EFI`
 - umount `/mnt/boot`
 - umount `/mnt/home`
