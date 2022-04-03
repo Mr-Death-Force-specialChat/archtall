@@ -58,5 +58,5 @@ sudo pacman -S plasma-meta kde-applications << EEOF
 
 EEOF
 sudo systemctl enable sddm
-sed -i 's/\/install-after.sh//g' ~/.bashrc
+sed -i 's/\/bash install-after.sh//g' ~/.bashrc
 echo Done! just reboot
