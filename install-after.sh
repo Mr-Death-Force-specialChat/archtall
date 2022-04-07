@@ -35,7 +35,11 @@ echo ---------------------------------------------------------------------------
 
 gpu_type=$(lspci)
 if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
-	sudo pacman -S --noconfirm --needed nvidia nvidia-lts nvidia-xconfig
+	if [ $LTS_LINUX == 'Y' ]; then
+		sudo pacman -S --noconfirm --needed nvidia nvidia-lts nvidia-xconfig
+	else
+		sudo pacman -S --noconfirm --needed nvidia nvidia-xconfig
+	fi
 elif lspci | grep 'VGA' | grep -E "Radeon|AMD"; then
 	sudo pacman -S --noconfirm --needed xf86-video-amdgpu
 elif grep -E "Integrated Graphics Controller" <<< ${gpu_type}; then
@@ -58,5 +62,25 @@ sudo pacman -S plasma-meta kde-applications << EEOF
 
 EEOF
 sudo systemctl enable sddm
+
+sudo pacman -Syu zsh << EEOF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EEOF
+
 sed -i 's/\/bash install-after.sh//g' ~/.bashrc
 echo Done! just reboot
