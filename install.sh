@@ -30,18 +30,12 @@ EEOF
 echo press enter...
 read
 
-echo Format disk with lvm\? \(Y/n\)
+echo Format disk with lvm\? \(Y/N\)
 read YN
-echo Encrypt disk with luks\? \(Y/n\)
+echo Encrypt disk with luks\? \(Y/N\)
 read ENC_DISK
-if [ $ENC_DISK == '' ]; then
-ENC_DISK='Y'
-fi
 
-if [ $YN == 'Y' ] || [ $YN == '' ]; then
-
-YN='Y'
-
+if [ $YN == 'Y' ]; then
 fdisk $DDISK <<EEOF
 g
 n
@@ -124,10 +118,10 @@ read ROOTSZ
 
 lvcreate -L $ROOTSZ $VOLGRP -n root_part
 
-echo Seperate home part\? \(Y/n\)
+echo Seperate home part\? \(Y/N\)
 read SEP_HOME
 
-if [ $SEP_HOME == 'Y' ] || [ $SEP_HOME == '' ]; then
+if [ $SEP_HOME == 'Y' ]; then
 echo Home part size \(Format: XXGB = XX gigabytes \(Recommended \'100%FREE\' \)\)
 read HOMESZ
 
@@ -146,7 +140,7 @@ mount $DBOOT /mnt/boot
 
 mkfs.ext4 /dev/$VOLGRP/home_part
 
-if [ $SEP_HOME == 'Y' ] || [ $SEP_HOME == '' ]; then
+if [ $SEP_HOME == 'Y' ]; then
 mkdir /mnt/home
 mount /dev/$VOLGRP/home_part /mnt/home
 else
@@ -165,7 +159,7 @@ EEOF
 
 cp install-chroot.sh /mnt/install-chroot.sh
 chmod u+x /mnt/install-chroot.sh
-if [ $ENC_DISK == 'Y' ] || [ $ENC_DISK == '' ]; then
+if [ $ENC_DISK == 'Y' ]; then
 $ENC_DISK == 'Y'
 fi
 echo $DGRUB>/mnt/VAR_DGRUB
@@ -186,7 +180,7 @@ echo "bash /install-after.sh" | tee -a /mnt/home/$USERNAME/.bashrc
 
 umount /mnt/boot/EFI
 umount /mnt/boot
-if [ $SEP_HOME == 'Y' ] || [ $SEP_HOME == '' ]; then
+if [ $SEP_HOME == 'Y' ]; then
 umount /mnt/home
 fi
 umount /mnt
