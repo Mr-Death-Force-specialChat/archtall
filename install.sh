@@ -34,7 +34,7 @@ echo Format disk with lvm\? \(Y/n\)
 read YN
 echo Encrypt disk with luks\? \(Y/n\)
 read ENC_DISK
-if [ $ENC_DISK == '' ]
+if [ $ENC_DISK == '' ]; then
 ENC_DISK='Y'
 fi
 
@@ -106,7 +106,8 @@ echo Enter volume name \(EG. \"lvm\"\)
 read PHYSVOL
 echo Enter volume group name \(EG. \"VOLGROUP0\"\)
 read VOLGRP
-if [ $ENC_DISK ]; then
+fi
+if [ $ENC_DISK == 'Y' ]; then
 echo Encrypting disk
 cryptsetup luksFormat $DROOT
 cryptsetup open --type luks $DROOT $PHYSVOL
@@ -156,9 +157,6 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 
 echo Fstab:
 cat /mnt/etc/fstab
-else
-
-fi
 
 pacstrap -i /mnt base << EEOF
 
@@ -206,3 +204,4 @@ echo 1 seconds...
 sleep 1s
 echo Rebooting...
 reboot
+
