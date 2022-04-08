@@ -5,20 +5,20 @@ set -e
 DGRUB=$(cat /VAR_DGRUB)
 ROOT=$(cat /VAR_ROOT)
 VOLGRP=$(cat /VAR_VOLGRP)
-ISLVM=$(cat /VAR_LVM)
 ENC_DISK=$(cat /VAR_ENCDISK)
 
 rm /VAR_DGRUB
 rm /VAR_ROOT
 rm /VAR_VOLGRP
-rm /VAR_LVM
 rm /VAR_ENCDISK
 
 echo Install lts linux\? \(Y/n\)
 read LTS_LINUX
 
-if [ $LTS_LINUX == '' ]; then
-$LTS_LINUX == 'Y'
+if [ $LTS_LINUX == '' ] || [ $LTS_LINUX == 'y' ]; then
+LTS_LINUX='Y'
+else
+LTS_LINUX='N'
 fi
 
 echo $LTS_LINUX>/VAR_LTS_LINUX_KERNEL
@@ -46,10 +46,15 @@ EEOF
 
 systemctl enable NetworkManager
 
+if [ $ENC_DISK == 'Y' ]; then
 sed -i 's/block filesystems/block encrypt lvm2 filesystems/g' /etc/mkinitcpio.conf
-
+else
+sed -i 's/block filesystems/block lvm2 filesystems/g' /etc/mkinitcpio.conf
+fi
 mkinitcpio -p linux
+if [ $LTS_LINUX == 'Y' ]; then
 mkinitcpio -p linux-lts
+fi
 
 sed -i 's/\#en_US.UTF-8/en_US.UTF-8/g' /etc/locale.gen
 locale-gen

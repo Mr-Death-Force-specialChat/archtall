@@ -30,12 +30,20 @@ EEOF
 echo press enter...
 read
 
-echo Format disk with lvm\? \(Y/N\)
-read YN
-echo Encrypt disk with luks\? \(Y/N\)
+echo Encrypt disk with luks\? \(y/N\)
 read ENC_DISK
 
-if [ $YN == 'Y' ]; then
+if [ $ENC_DISK == 'n' ] || [ $ENC_DISK == 'N' ] || [ $ENC_DISK == '' ]; then
+echo 'Encrypt: No'
+ENC_DISK='N'
+elif [ $ENC_DISK == 'y' ] || [ $ENC_DISK == 'Y']; then
+echo 'Encrypt: Yes'
+ENC_DISK='Y'
+else
+echo 'Encrypt: No'
+ENC_DISK='N'
+fi
+
 fdisk $DDISK <<EEOF
 g
 n
@@ -61,46 +69,15 @@ w
 
 EEOF
 
-elif [ $YN == 'N' ]; then
-
-fdisk $DDISK <<EEOF
-g
-n
-
-
-+500M
-t
-
-1
-n
-
-
-+500M
-n
-
-
-
-p
-w
-
-EEOF
-
-else
-    echo Invalid answer
-    exit 1
-fi
-
 mkfs.fat -F32 $DGRUB
 mkfs.ext4 $DBOOT
 
 SEP_HOME='N'
 
-if [ $YN == 'Y' ]; then
 echo Enter volume name \(EG. \"lvm\"\)
 read PHYSVOL
 echo Enter volume group name \(EG. \"VOLGROUP0\"\)
 read VOLGRP
-fi
 if [ $ENC_DISK == 'Y' ]; then
 echo Encrypting disk
 cryptsetup luksFormat $DROOT
@@ -159,14 +136,10 @@ EEOF
 
 cp install-chroot.sh /mnt/install-chroot.sh
 chmod u+x /mnt/install-chroot.sh
-if [ $ENC_DISK == 'Y' ]; then
-$ENC_DISK == 'Y'
-fi
 echo $DGRUB>/mnt/VAR_DGRUB
 echo $ROOT>/mnt/VAR_ROOT
 echo $VOLGRP>/mnt/VAR_VOLGRP
 echo $ENC_DISK>/mnt/VAR_ENCDISK
-echo $YN>/mnt/VAR_LVM
 
 arch-chroot /mnt /install-chroot.sh
 
@@ -198,4 +171,3 @@ echo 1 seconds...
 sleep 1s
 echo Rebooting...
 reboot
-
