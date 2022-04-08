@@ -115,9 +115,8 @@ mount /dev/$VOLGRP/root_part /mnt
 mkdir /mnt/boot
 mount $DBOOT /mnt/boot
 
-mkfs.ext4 /dev/$VOLGRP/home_part
-
 if [ $SEP_HOME == 'Y' ]; then
+mkfs.ext4 /dev/$VOLGRP/home_part
 mkdir /mnt/home
 mount /dev/$VOLGRP/home_part /mnt/home
 else
