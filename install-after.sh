@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LTS_LINUX=$(cat /VAR_LTS_LINUX_KERNEL)
-sudo rm VAR_LTS_LINUX_KERNEL
+sudo rm /VAR_LTS_LINUX_KERNEL
 
 echo Enter your password
 sudo id
