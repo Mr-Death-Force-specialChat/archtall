@@ -63,6 +63,12 @@ sudo pacman -S plasma-meta kde-applications << EEOF
 
 
 
+
+
+
+
+
+
 EEOF
 sudo systemctl enable sddm
 
