@@ -3,7 +3,7 @@ name: Bug report
 about: Create a report to fix the scripts
 title: "[BUG] (Issue)"
 labels: ''
-assignees: ''
+assignees: '@Mr-Death-Force-specialChat'
 
 ---
 
