@@ -3,7 +3,7 @@ name: Bug report (NOT in the live iso)
 about: Create a report to fix a misconfig bug
 title: "[BOOT_BUG] (issue)"
 labels: ''
-assignees: ''
+assignees: '@Mr-Death-Force-specialChat'
 
 ---
 
