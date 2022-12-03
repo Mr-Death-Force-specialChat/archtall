@@ -51,6 +51,15 @@ elif grep -E "Intel Corporation UHD" <<< ${gpu_type}; then
 	sudo pacman -S --needed --noconfirm libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa
 fi
 
+echo Do you want to install kde?
+read KDE
+
+if [ $KDE == 'y' ]; then
+	KDE = Y
+fi
+
+if [ $KDE == 'Y' ]; then
+
 echo ----------------------------------------------------------------------------------
 echo \|					Installing KDE						  \|
 echo ----------------------------------------------------------------------------------
@@ -71,6 +80,7 @@ sudo pacman -S plasma-meta kde-applications << EEOF
 
 EEOF
 sudo systemctl enable sddm
+fi
 
 sudo pacman -Syu zsh << EEOF
 
